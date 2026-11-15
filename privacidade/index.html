@@ -14,7 +14,7 @@
         <img src="../dev-panel.png" alt="Logo do Dev Panel" width="64" height="64">
         <div>
             <h1>Política de Privacidade</h1>
-            <p>Dev Panel · atualizada em 12 de novembro de 2026</p>
+            <p>Dev Panel · atualizada em 15 de novembro de 2026</p>
         </div>
     </header>
 
@@ -32,7 +32,12 @@
         acessa:
     </p>
     <ul>
-        <li>os arquivos que o próprio Dev Panel cria no Google Drive (os backups dos projetos);</li>
+        <li>
+            os arquivos e as pastas que o próprio Dev Panel cria no Google Drive: os backups dos
+            projetos e os arquivos e as pastas do servidor que o usuário escolhe enviar pelo
+            gerenciador de arquivos (<strong>Arquivos → Enviar para → Google Drive</strong>), junto
+            com as pastas criadas pelo painel para recebê-los;
+        </li>
         <li>o endereço de e-mail da conta, para mostrar qual conta está conectada;</li>
         <li>o espaço usado e o espaço total do Drive, para mostrar quanto ainda cabe.</li>
     </ul>
@@ -44,7 +49,11 @@
     <h2>Para que os dados são usados</h2>
     <p>
         Exclusivamente para as funções que o próprio usuário usa no painel: guardar e listar os
-        backups no Drive dele e mostrar a conta conectada e o espaço disponível. Os dados não são
+        backups no Drive dele; enviar ao Drive os arquivos e as pastas do servidor que ele escolhe,
+        repetindo a árvore de pastas e substituindo um arquivo de mesmo nome só quando ele pede;
+        criar, renomear e mover para a lixeira do Drive as pastas criadas pelo painel, a pedido dele;
+        listar e baixar para o servidor o que o painel enviou; e mostrar a conta conectada e o espaço
+        disponível. Os dados não são
         usados para publicidade, não são vendidos, não são usados para treinar modelos de
         inteligência artificial e não são lidos por pessoas.
     </p>
@@ -57,7 +66,11 @@
             e-mail da conta.
         </li>
         <li>O token de acesso de curta duração fica só na memória do servidor e nunca é gravado em disco.</li>
-        <li>Os backups ficam no Google Drive do próprio usuário.</li>
+        <li>
+            Os backups e os arquivos enviados ficam no Google Drive do próprio usuário. No envio, o
+            arquivo vai do servidor direto para o Google, sem cópia em outro lugar, e o endereço da
+            sessão de envio do Google é tratado como segredo: não é gravado nem aparece em registro.
+        </li>
     </ul>
     <p>
         A comunicação acontece apenas entre o servidor do usuário e as APIs do Google, por HTTPS.
@@ -81,7 +94,9 @@
         Google e apaga o token e o e-mail do banco de dados. O acesso também pode ser revogado a
         qualquer momento em
         <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Os
-        backups já gravados no Drive continuam lá até o usuário apagá-los.
+        backups, os arquivos e as pastas já gravados no Drive continuam lá até o usuário apagá-los.
+        Uma pasta que o usuário manda para a lixeira pelo painel vai para a lixeira do Google Drive,
+        de onde pode ser restaurada por 30 dias.
     </p>
 
     <h2>Este site</h2>
@@ -101,7 +116,7 @@
 
     <section class="card" lang="en" id="english">
         <h2>English</h2>
-        <p><em>Last updated: November 12, 2026.</em></p>
+        <p><em>Last updated: November 15, 2026.</em></p>
         <p>
             Dev Panel is a personal, non-commercial web hosting control panel for Ubuntu VPS servers,
             maintained by Elimarcos Morais. Each user installs and runs it on their own server.
@@ -111,22 +126,28 @@
             When a Google account is linked in <strong>Configurações → Conectores</strong>
             (Settings → Connectors), Dev Panel
             requests only the <code>https://www.googleapis.com/auth/drive.file</code> scope. It
-            accesses the files Dev Panel itself creates in Google Drive (project backups), the
-            account's email address (to show which account is connected) and the Drive storage
+            accesses the files and folders Dev Panel itself creates in Google Drive (project backups,
+            the server files and folders the user chooses to send through the file manager, and the
+            folders the panel creates to hold them), the account's email address (to show which account is connected) and the Drive storage
             usage and limit. It never reads, changes or deletes any other file, and it does not
             access any other Google service.
         </p>
         <h3>Use</h3>
         <p>
-            Data is used only to store and list the user's backups and to show the connected account
-            and available storage. It is not used for advertising, not sold, not used to train AI
+            Data is used only for the features the user runs in the panel: storing and listing
+            backups; sending to Drive the server files and folders the user chooses, mirroring the
+            folder tree and replacing a file of the same name only when the user asks; creating,
+            renaming and moving to the Drive trash the folders the panel created, at the user's
+            request; listing and downloading to the server what the panel sent; and showing the
+            connected account and available storage. It is not used for advertising, not sold, not used to train AI
             models and not read by humans.
         </p>
         <h3>Storage</h3>
         <p>
             The Google refresh token is stored encrypted (AES-256-GCM) in the panel's database on the
             user's own server, together with the account email. The short-lived access token is kept
-            only in memory. Data flows only between the user's server and Google APIs over HTTPS; no
+            only in memory. Sent files go from the server straight to Google, and the address of
+            Google's upload session is treated as a secret, never stored nor logged. Data flows only between the user's server and Google APIs over HTTPS; no
             Google user data is ever sent to the developer or to third parties.
         </p>
         <h3>Sharing</h3>
@@ -143,7 +164,9 @@
             Desconectar</strong> (Settings → Connectors → Disconnect) revokes the authorization at Google and deletes the token and the
             email from the database. Access can also be revoked at any time at
             <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.
-            Backups already in Drive remain there until the user deletes them.
+            Backups, files and folders already in Drive remain there until the user deletes them; a
+            folder the user moves to the trash through the panel goes to the Google Drive trash, where
+            it can be restored for 30 days.
         </p>
         <h3>This site and contact</h3>
         <p>

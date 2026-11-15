@@ -31,7 +31,7 @@
         <li>Instala, atualiza e configura aplicativos como Nginx, PHP, MySQL, PostgreSQL, Redis e Node.js.</li>
         <li>Cria bancos de dados, gerencia arquivos, abre um terminal e controla o firewall.</li>
         <li>Publica sites, inclusive a partir de um repositório do GitHub.</li>
-        <li>Vincula uma conta do Google Drive para guardar os backups dos projetos.</li>
+        <li>Vincula uma conta do Google Drive para guardar os backups dos projetos e enviar a ela os arquivos e as pastas do servidor que o usuário escolher.</li>
     </ul>
 
     <section class="card" id="google-drive">
@@ -40,8 +40,9 @@
             Em <strong>Configurações → Conectores</strong>, o usuário pode vincular uma conta do
             Google Drive ao painel instalado no servidor dele. A autorização é feita na página do
             próprio Google, e o Dev Panel pede só o escopo
-            <code>https://www.googleapis.com/auth/drive.file</code>: ele alcança apenas os arquivos
-            que o próprio Dev Panel cria no Drive (os backups), nunca o resto do Drive.
+            <code>https://www.googleapis.com/auth/drive.file</code>: ele alcança apenas os arquivos e
+            as pastas que o próprio Dev Panel cria no Drive (os backups e o que o usuário envia pelo
+            gerenciador de arquivos), nunca o resto do Drive.
         </p>
         <p>
             Os dados da conta Google ficam no servidor de quem instalou o painel e não são enviados ao
@@ -59,9 +60,10 @@
             Morais.
         </p>
         <p>
-            Users can link a Google Drive account to store project backups. Dev Panel requests only
-            the <code>https://www.googleapis.com/auth/drive.file</code> scope, so it reaches only the
-            files it creates itself. Google account data stays on the user's server and is never sent
+            Users can link a Google Drive account to store project backups and to send it the server
+            files and folders they choose. Dev Panel requests only the
+            <code>https://www.googleapis.com/auth/drive.file</code> scope, so it reaches only the
+            files and folders it creates itself. Google account data stays on the user's server and is never sent
             to the developer or to third parties. See the
             <a href="privacidade/#english">Privacy Policy</a>.
         </p>
