@@ -32,6 +32,7 @@
         <li>Cria bancos de dados, gerencia arquivos, abre um terminal e controla o firewall.</li>
         <li>Publica sites, inclusive a partir de um repositório do GitHub.</li>
         <li>Vincula uma conta do Google Drive para guardar os backups dos projetos e enviar a ela os arquivos e as pastas do servidor que o usuário escolher.</li>
+        <li>Vincula uma conta Microsoft do OneDrive, com acesso restrito à pasta do app (<code>Apps/Dev Panel</code>).</li>
     </ul>
 
     <section class="card" id="google-drive">
@@ -51,6 +52,24 @@
         </p>
     </section>
 
+    <section class="card" id="onedrive">
+        <h2>Conexão com o OneDrive</h2>
+        <p>
+            Em <strong>Configurações → Conectores</strong>, o usuário também pode vincular uma conta
+            Microsoft (pessoal, de trabalho ou de escola) ao painel. A autorização é feita na página da
+            própria Microsoft, e o Dev Panel pede só a permissão
+            <code>Files.ReadWrite.AppFolder</code> do OneDrive, que alcança apenas a pasta
+            <code>Apps/Dev Panel</code> criada pela Microsoft para o app, nunca o resto do OneDrive,
+            além de <code>User.Read</code>, para mostrar o e-mail da conta conectada, e
+            <code>offline_access</code>, para manter o vínculo.
+        </p>
+        <p>
+            Os dados da conta Microsoft também ficam só no servidor de quem instalou o painel e não são
+            enviados ao desenvolvedor nem a terceiros. Os detalhes estão na
+            <a href="privacidade/#onedrive">Política de Privacidade</a>.
+        </p>
+    </section>
+
     <section class="card" lang="en" id="english">
         <h2>English</h2>
         <p>
@@ -64,7 +83,15 @@
             files and folders they choose. Dev Panel requests only the
             <code>https://www.googleapis.com/auth/drive.file</code> scope, so it reaches only the
             files and folders it creates itself. Google account data stays on the user's server and is never sent
-            to the developer or to third parties. See the
+            to the developer or to third parties.
+        </p>
+        <p>
+            Users can also link a Microsoft account (personal, work or school) for OneDrive. Dev Panel
+            requests only the <code>Files.ReadWrite.AppFolder</code> OneDrive permission, which
+            reaches only the app folder Microsoft creates for it (<code>Apps/Dev Panel</code>), never
+            the rest of OneDrive, plus <code>User.Read</code>, to show the connected account's email,
+            and <code>offline_access</code>, to keep the link. Microsoft account data also stays on the
+            user's server and is never sent to the developer or to third parties. See the
             <a href="privacidade/#english">Privacy Policy</a>.
         </p>
     </section>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Política de Privacidade · Dev Panel</title>
-    <meta name="description" content="Como o Dev Panel trata os dados da conta Google vinculada pelo conector do Google Drive.">
+    <meta name="description" content="Como o Dev Panel trata os dados das contas Google e Microsoft vinculadas pelos conectores do Google Drive e do OneDrive.">
     <link rel="icon" href="../dev-panel.png">
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -14,7 +14,7 @@
         <img src="../dev-panel.png" alt="Logo do Dev Panel" width="64" height="64">
         <div>
             <h1>Política de Privacidade</h1>
-            <p>Dev Panel · atualizada em 15 de novembro de 2026</p>
+            <p>Dev Panel · atualizada em 16 de novembro de 2026</p>
         </div>
     </header>
 
@@ -22,7 +22,8 @@
         O Dev Panel é um painel web de hospedagem para VPS Ubuntu, de uso pessoal e não comercial,
         mantido por Elimarcos Morais. Cada pessoa instala e executa o Dev Panel no próprio servidor.
         Esta política explica quais dados da conta Google o Dev Panel acessa quando o conector do
-        Google Drive é usado, para quê, onde eles ficam e como removê-los.
+        Google Drive é usado, para quê, onde eles ficam e como removê-los. O conector do OneDrive,
+        que usa uma conta Microsoft, é tratado na seção <a href="#onedrive">OneDrive</a>.
     </p>
 
     <h2>Quais dados do Google são acessados</h2>
@@ -99,6 +100,51 @@
         de onde pode ser restaurada por 30 dias.
     </p>
 
+    <section class="card" id="onedrive">
+        <h2>OneDrive (conta Microsoft)</h2>
+        <h3>Quais dados da Microsoft são acessados</h3>
+        <p>
+            Ao vincular uma conta Microsoft (pessoal, de trabalho ou de escola) em
+            <strong>Configurações → Conectores → OneDrive</strong>, a autorização é feita na página da
+            própria Microsoft, e o Dev Panel pede somente estas permissões:
+        </p>
+        <ul>
+            <li>
+                <code>Files.ReadWrite.AppFolder</code>: alcança apenas a pasta
+                <code>Apps/Dev Panel</code>, que a Microsoft cria no OneDrive para o app, nunca o resto
+                do OneDrive;
+            </li>
+            <li><code>User.Read</code>: usada só para ler o endereço de e-mail da conta, para mostrar qual conta está conectada;</li>
+            <li><code>offline_access</code>: para manter o vínculo sem pedir a autorização de novo a cada uso.</li>
+        </ul>
+        <p>
+            Hoje o painel lê da conta Microsoft apenas o e-mail: ele não lista, não envia e não baixa
+            arquivos do OneDrive, e não acessa e-mails, contatos, agenda ou qualquer outro serviço da
+            Microsoft. Quando isso mudar, esta política muda junto.
+        </p>
+        <h3>Onde os dados ficam e compartilhamento</h3>
+        <p>
+            A autorização da Microsoft (o <em>refresh token</em>) é guardada criptografada
+            (AES-256-GCM) no banco de dados do painel, no servidor de quem o instalou, junto com o
+            e-mail da conta; quando a Microsoft entrega um refresh token novo, ele substitui o antigo
+            do mesmo jeito. O token de acesso de curta duração fica só na memória do servidor e nunca
+            é gravado em disco. A comunicação acontece apenas entre o servidor do usuário e a
+            Microsoft, por HTTPS. Nenhum dado da conta Microsoft é enviado ao desenvolvedor do Dev
+            Panel nem a terceiros, e esses dados não são usados para publicidade, não são vendidos,
+            não são usados para treinar modelos de inteligência artificial e não são lidos por pessoas.
+        </p>
+        <h3>Retenção e exclusão</h3>
+        <p>
+            Os dados ficam no servidor enquanto a conta estiver conectada. Em
+            <strong>Configurações → Conectores → OneDrive → Desconectar</strong>, o painel apaga o
+            token e o e-mail do banco de dados. A Microsoft não deixa um app revogar o próprio acesso,
+            então a revogação é feita pelo usuário nas permissões de apps da conta Microsoft, em
+            <a href="https://account.live.com/consent/Manage">account.live.com/consent/Manage</a>, ou,
+            numa conta de trabalho ou escola, em
+            <a href="https://myapps.microsoft.com">Meus Aplicativos</a>.
+        </p>
+    </section>
+
     <h2>Este site</h2>
     <p>
         Esta página é estática, hospedada pelo GitHub Pages, sem cookies, formulários ou
@@ -116,7 +162,7 @@
 
     <section class="card" lang="en" id="english">
         <h2>English</h2>
-        <p><em>Last updated: November 15, 2026.</em></p>
+        <p><em>Last updated: November 16, 2026.</em></p>
         <p>
             Dev Panel is a personal, non-commercial web hosting control panel for Ubuntu VPS servers,
             maintained by Elimarcos Morais. Each user installs and runs it on their own server.
@@ -167,6 +213,34 @@
             Backups, files and folders already in Drive remain there until the user deletes them; a
             folder the user moves to the trash through the panel goes to the Google Drive trash, where
             it can be restored for 30 days.
+        </p>
+        <h3 id="onedrive-english">OneDrive (Microsoft account)</h3>
+        <p>
+            When a Microsoft account (personal, work or school) is linked in
+            <strong>Configurações → Conectores → OneDrive</strong>, authorization happens on
+            Microsoft's own page and Dev Panel requests only <code>Files.ReadWrite.AppFolder</code>,
+            which reaches only the <code>Apps/Dev Panel</code> folder Microsoft creates for the app in
+            OneDrive, never the rest of OneDrive; <code>User.Read</code>, used only to read the
+            account's email address and show which account is connected; and
+            <code>offline_access</code>, to keep the link. Today the panel reads only that email: it
+            does not list, upload or download OneDrive files, and it does not access any other
+            Microsoft service. This policy will change when that does.
+        </p>
+        <p>
+            The Microsoft refresh token is stored encrypted (AES-256-GCM) in the panel's database on
+            the user's own server, together with the account email, and a new refresh token issued by
+            Microsoft replaces the old one the same way. The short-lived access token is kept only in
+            memory. Data flows only between the user's server and Microsoft over HTTPS; no Microsoft
+            account data is ever sent to the developer or to third parties, used for advertising,
+            sold, used to train AI models or read by humans.
+        </p>
+        <p>
+            <strong>Configurações → Conectores → OneDrive → Desconectar</strong> (Settings →
+            Connectors → OneDrive → Disconnect) deletes the token and the email from the database.
+            Microsoft does not let an app revoke its own access, so the user revokes it in the app
+            permissions of the Microsoft account at
+            <a href="https://account.live.com/consent/Manage">account.live.com/consent/Manage</a> or,
+            for a work or school account, in <a href="https://myapps.microsoft.com">My Apps</a>.
         </p>
         <h3>This site and contact</h3>
         <p>
