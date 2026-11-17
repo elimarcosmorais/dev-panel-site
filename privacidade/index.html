@@ -14,7 +14,7 @@
         <img src="../dev-panel.png" alt="Logo do Dev Panel" width="64" height="64">
         <div>
             <h1>Política de Privacidade</h1>
-            <p>Dev Panel · atualizada em 16 de novembro de 2026</p>
+            <p>Dev Panel · atualizada em 17 de novembro de 2026</p>
         </div>
     </header>
 
@@ -118,9 +118,14 @@
             <li><code>offline_access</code>: para manter o vínculo sem pedir a autorização de novo a cada uso.</li>
         </ul>
         <p>
-            Hoje o painel lê da conta Microsoft apenas o e-mail: ele não lista, não envia e não baixa
-            arquivos do OneDrive, e não acessa e-mails, contatos, agenda ou qualquer outro serviço da
-            Microsoft. Quando isso mudar, esta política muda junto.
+            O painel lista, baixa e envia arquivos do OneDrive somente na pasta
+            <code>Apps/Dev Panel</code>, e só para as funções que o próprio usuário usa no painel:
+            listar e baixar para o servidor os arquivos dessa pasta; enviar a ela os arquivos e as
+            pastas do servidor que ele escolhe, repetindo a árvore de pastas e substituindo um arquivo
+            de mesmo nome só quando ele pede; e criar, renomear e mover para a lixeira do OneDrive as
+            pastas dela, a pedido dele. Da conta Microsoft, lê também o e-mail. O painel não lê, não
+            altera e não apaga nada fora dessa pasta, e não acessa e-mails, contatos, agenda ou
+            qualquer outro serviço da Microsoft.
         </p>
         <h3>Onde os dados ficam e compartilhamento</h3>
         <p>
@@ -128,8 +133,11 @@
             (AES-256-GCM) no banco de dados do painel, no servidor de quem o instalou, junto com o
             e-mail da conta; quando a Microsoft entrega um refresh token novo, ele substitui o antigo
             do mesmo jeito. O token de acesso de curta duração fica só na memória do servidor e nunca
-            é gravado em disco. A comunicação acontece apenas entre o servidor do usuário e a
-            Microsoft, por HTTPS. Nenhum dado da conta Microsoft é enviado ao desenvolvedor do Dev
+            é gravado em disco. Os arquivos enviados ficam no OneDrive do próprio usuário: no envio,
+            o arquivo vai do servidor direto para a Microsoft, sem cópia em outro lugar, e o endereço
+            da sessão de envio da Microsoft é tratado como segredo: não é gravado nem aparece em
+            registro. A comunicação acontece apenas entre o servidor do usuário e a Microsoft, por
+            HTTPS. Nenhum dado da conta Microsoft é enviado ao desenvolvedor do Dev
             Panel nem a terceiros, e esses dados não são usados para publicidade, não são vendidos,
             não são usados para treinar modelos de inteligência artificial e não são lidos por pessoas.
         </p>
@@ -137,7 +145,10 @@
         <p>
             Os dados ficam no servidor enquanto a conta estiver conectada. Em
             <strong>Configurações → Conectores → OneDrive → Desconectar</strong>, o painel apaga o
-            token e o e-mail do banco de dados. A Microsoft não deixa um app revogar o próprio acesso,
+            token e o e-mail do banco de dados. Os arquivos e as pastas já gravados no OneDrive
+            continuam lá até o usuário apagá-los; uma pasta que o usuário manda para a lixeira pelo
+            painel vai para a lixeira do OneDrive, de onde pode ser restaurada. A Microsoft não deixa
+            um app revogar o próprio acesso,
             então a revogação é feita pelo usuário nas permissões de apps da conta Microsoft, em
             <a href="https://account.live.com/consent/Manage">account.live.com/consent/Manage</a>, ou,
             numa conta de trabalho ou escola, em
@@ -162,7 +173,7 @@
 
     <section class="card" lang="en" id="english">
         <h2>English</h2>
-        <p><em>Last updated: November 16, 2026.</em></p>
+        <p><em>Last updated: November 17, 2026.</em></p>
         <p>
             Dev Panel is a personal, non-commercial web hosting control panel for Ubuntu VPS servers,
             maintained by Elimarcos Morais. Each user installs and runs it on their own server.
@@ -222,21 +233,29 @@
             which reaches only the <code>Apps/Dev Panel</code> folder Microsoft creates for the app in
             OneDrive, never the rest of OneDrive; <code>User.Read</code>, used only to read the
             account's email address and show which account is connected; and
-            <code>offline_access</code>, to keep the link. Today the panel reads only that email: it
-            does not list, upload or download OneDrive files, and it does not access any other
-            Microsoft service. This policy will change when that does.
+            <code>offline_access</code>, to keep the link. The panel lists, downloads and uploads
+            OneDrive files only in the <code>Apps/Dev Panel</code> folder, and only for the features
+            the user runs in the panel: listing and downloading that folder's files to the server;
+            sending to it the server files and folders the user chooses, mirroring the folder tree
+            and replacing a file of the same name only when the user asks; and creating, renaming and
+            moving to the OneDrive recycle bin its folders, at the user's request. It never reads,
+            changes or deletes anything outside that folder, and it does not access any other
+            Microsoft service.
         </p>
         <p>
             The Microsoft refresh token is stored encrypted (AES-256-GCM) in the panel's database on
             the user's own server, together with the account email, and a new refresh token issued by
             Microsoft replaces the old one the same way. The short-lived access token is kept only in
-            memory. Data flows only between the user's server and Microsoft over HTTPS; no Microsoft
+            memory. Sent files go from the server straight to Microsoft, and the address of
+            Microsoft's upload session is treated as a secret, never stored nor logged. Data flows
+            only between the user's server and Microsoft over HTTPS; no Microsoft
             account data is ever sent to the developer or to third parties, used for advertising,
             sold, used to train AI models or read by humans.
         </p>
         <p>
             <strong>Configurações → Conectores → OneDrive → Desconectar</strong> (Settings →
-            Connectors → OneDrive → Disconnect) deletes the token and the email from the database.
+            Connectors → OneDrive → Disconnect) deletes the token and the email from the database;
+            files and folders already in OneDrive remain there until the user deletes them.
             Microsoft does not let an app revoke its own access, so the user revokes it in the app
             permissions of the Microsoft account at
             <a href="https://account.live.com/consent/Manage">account.live.com/consent/Manage</a> or,
